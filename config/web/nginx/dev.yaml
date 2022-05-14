@@ -1,0 +1,9 @@
+name: learn.local
+ip: 127.0.0.1
+port: 9203
+hostname: learn.local
+root: /Users/tkirby/workspace/zbryikt/learn/frontend/web/static/
+cert:
+  crt: /Users/tkirby/workspace/zbryikt/projects/cert/learn.local/server.crt
+  key: /Users/tkirby/workspace/zbryikt/projects/cert/learn.local/server.key
+nginxCfgDir: /usr/local/etc/nginx
