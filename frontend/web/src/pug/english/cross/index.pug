@@ -1,0 +1,42 @@
+extends /base.pug
+block head
+  +css([
+    {name: "@loadingio/loading.css", path: "entries/bounce.min.css"},
+    {name: "@loadingio/loading.css", path: "entries/jingle.min.css"}
+  ])
+  style(type="text/css"): :stylus
+    html, body { width: 100%; height: 100% }
+    .cells
+      display: grid
+      gap: .5em
+      grid-template: unquote('repeat(10, 1fr) / repeat(10, 1fr)')
+      width: 480px
+      height: 480px 
+    .cell
+      border: 1px solid #999
+      display: flex
+      align-items: center
+      justify-content: center
+      position: relative
+      user-select: none
+    .cell.active:after
+      content: "\f05c"
+      animation: ld-bounce 1s infinite
+      font-family: ldi
+      display: block
+      width: 2em
+      height: 2em
+      position: absolute
+      bottom: -.5em
+      left: 50%
+      margin-left: -.5em
+    .cell.disabled
+      border: 1px solid transparent
+      
+block body
+  .w-100.h-100.d-flex.align-items-center.justify-content-center
+    .cells
+      .cell.p-2.rounded-sm.ld(ld-each="cell",style="text-transform:uppercase;font-family:monospace;animation-iteration-count:1")
+
+block script
+  script(type="module"): include:lsc index.ls
