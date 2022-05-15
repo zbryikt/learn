@@ -1,0 +1,60 @@
+extends /base.pug
+block vars
+block head
+  style(type="text/css"): :stylus
+    html,body { width: 100%; height: 100% }
+block body
+  .container-sm.h-100.py-4
+    .row.h-100
+      .col-sm.h-100: .w-100.h-100.vertical-center: .w-100: .w-100.d-flex.justify-content-center: div
+        div 題目#[span(ld="idx")]
+        .text-lg.font-weight-bold(ld="question",style="white-space:pre-wrap") ...
+        .input-group.mt-4
+          input.form-control.form-control-lg(ld="reply-input")
+          .input-group-append
+            .btn.btn-lg.btn-outline-secondary(ld="reply-button") 送出
+      .col-sm.h-100: .d-flex.flex-column.h-100
+        .d-flex.flex-nowrap.justify-content-between.mb-4.border.rounded-sm.py-2.px-4.shadow-sm
+          div
+            .text-muted 總題數
+            .font-weight-bold.text-lg(ld="total")
+          div
+            .text-muted 正確數
+            .font-weight-bold.text-lg.text-success(ld="count",data-name="correct") 0
+          div
+            .text-muted 答錯數
+            .font-weight-bold.text-lg.text-danger(ld="count",data-name="wrong") 0
+          div
+            .text-muted 正確率
+            div
+              span.font-weight-bold.text-lg(ld="percent",data-name="correct") 0
+              span %
+          div
+            .text-muted 平均費時
+            div
+              span.font-weight-bold.text-lg(ld="elapsed") 0
+              span 秒
+
+        .text-muted 作答歷史
+        .flex-grow-1(style="overflow:scroll")
+          .mb-2.p-4.bg-light.border.rounded-sm(ld-each="history",style="border-width:3px!important")
+            .d-flex.py-1.mb-1
+              .mr-2.text-nowrap 題目#[span(ld="idx")]
+              div(ld="question")
+            hr
+            .d-flex.justify-content-between
+              div
+                .text-muted 您的答案
+                .font-weight-bold.text-lg.text-center(ld="response") 0
+              div
+                .text-muted 正確答案
+                .font-weight-bold.text-lg.text-center(ld="answer") 0
+              div
+                .text-muted 作答結果
+                .font-weight-bold.text-lg.text-center: i(ld="result")
+              div
+                .text-muted 花費時間
+                .font-weight-bold.text-lg.text-center #[span(ld="elapsed")] 秒
+
+block script
+  script(type="module"): include:lsc index.ls

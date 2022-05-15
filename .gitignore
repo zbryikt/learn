@@ -22,3 +22,4 @@ config/mail/
 !config/mail/sample/
 .version
 module/version/index.pug
+!frontend/web
